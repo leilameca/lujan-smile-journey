@@ -1,95 +1,57 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600;700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
-
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
-
+    --background: 210 33% 98%;
+    --foreground: 220 40% 13%;
+    
     --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
-
+    --card-foreground: 220 40% 13%;
+    
     --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
-
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
-
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
-
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
-
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
-
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
-
-    --radius: 0.5rem;
+    --popover-foreground: 220 40% 13%;
+    
+    --primary: 225 65% 17%;
+    --primary-foreground: 0 0% 100%;
+    
+    --secondary: 210 33% 97%;
+    --secondary-foreground: 225 65% 17%;
+    
+    --muted: 210 33% 96%;
+    --muted-foreground: 220 10% 46%;
+    
+    --accent: 180 78% 55%;
+    --accent-foreground: 225 65% 10%;
+    
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+    
+    --border: 214 32% 91%;
+    --input: 214 32% 91%;
+    --ring: 180 78% 55%;
+    
+    --radius: 0.75rem;
+    
+    --navy: 225 65% 17%;
+    --navy-deep: 228 72% 12%;
+    --navy-light: 225 45% 25%;
+    --cyan: 180 78% 55%;
+    --cyan-light: 180 90% 85%;
+    --cyan-glow: 180 78% 55%;
+    --surface: 210 33% 98%;
+    --surface-elevated: 0 0% 100%;
 
     --sidebar-background: 0 0% 98%;
-
     --sidebar-foreground: 240 5.3% 26.1%;
-
     --sidebar-primary: 240 5.9% 10%;
-
     --sidebar-primary-foreground: 0 0% 98%;
-
     --sidebar-accent: 240 4.8% 95.9%;
-
     --sidebar-accent-foreground: 240 5.9% 10%;
-
     --sidebar-border: 220 13% 91%;
-
-    --sidebar-ring: 217.2 91.2% 59.8%;
-  }
-
-  .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
-
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
-
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
-
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
-
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
-
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
-
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
-
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
     --sidebar-ring: 217.2 91.2% 59.8%;
   }
 }
@@ -98,8 +60,92 @@ All colors MUST be HSL.
   * {
     @apply border-border;
   }
-
+  
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground antialiased;
+    font-family: 'Inter', sans-serif;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Playfair Display', serif;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@layer components {
+  .heading-display {
+    font-family: 'Playfair Display', serif;
+    @apply tracking-tight;
+  }
+  
+  .text-gradient-cyan {
+    background: linear-gradient(135deg, hsl(180 78% 55%), hsl(180 90% 75%));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  
+  .bg-navy-gradient {
+    background: linear-gradient(135deg, hsl(228 72% 12%), hsl(225 65% 17%));
+  }
+  
+  .glow-cyan {
+    box-shadow: 0 0 30px -5px hsl(180 78% 55% / 0.3);
+  }
+  
+  .glass-card {
+    @apply bg-card/80 backdrop-blur-lg border border-border/50;
+    box-shadow: 0 4px 24px -2px hsl(220 40% 13% / 0.06);
+  }
+  
+  .section-padding {
+    @apply py-20 md:py-28 lg:py-32;
+  }
+  
+  .container-narrow {
+    @apply max-w-6xl mx-auto px-5 md:px-8;
+  }
+  
+  .animate-in-view {
+    @apply opacity-0 translate-y-6 transition-all duration-700 ease-out;
+  }
+  
+  .animate-in-view.visible {
+    @apply opacity-100 translate-y-0;
+  }
+
+  .btn-primary-clinic {
+    @apply inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full font-medium text-sm tracking-wide transition-all duration-300;
+    background: linear-gradient(135deg, hsl(180 78% 55%), hsl(180 60% 45%));
+    color: hsl(225 65% 10%);
+    box-shadow: 0 4px 20px -4px hsl(180 78% 55% / 0.4);
+  }
+  
+  .btn-primary-clinic:hover {
+    box-shadow: 0 8px 30px -4px hsl(180 78% 55% / 0.5);
+    transform: translateY(-1px);
+  }
+  
+  .btn-outline-clinic {
+    @apply inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full font-medium text-sm tracking-wide border transition-all duration-300;
+    border-color: hsl(180 78% 55% / 0.4);
+    color: hsl(0 0% 100%);
+  }
+  
+  .btn-outline-clinic:hover {
+    background: hsl(180 78% 55% / 0.1);
+    border-color: hsl(180 78% 55%);
+  }
+}
+
+@layer utilities {
+  .line-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
   }
 }
