@@ -3,7 +3,7 @@ import react from "@vitejs/plugin-react-swc";
 import path from "path";
 import { componentTagger } from "lovable-tagger";
 
-const productionBase = "/lujan-smile-journey/docs/";
+const productionBase = "/lujan-smile-journey/";
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => ({
