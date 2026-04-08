@@ -55,7 +55,7 @@ export default function Hero() {
           </h1>
 
           <p
-            className="text-primary-foreground/72 text-lg md:text-xl leading-relaxed max-w-[36rem] mb-10 opacity-0 animate-fade-up"
+            className="text-primary-foreground text-lg md:text-xl leading-relaxed max-w-[36rem] mb-10 opacity-0 animate-fade-up"
             style={{ animationDelay: "0.6s" }}
           >
             Odontología de alto nivel con tecnología avanzada, atención cercana y resultados diseñados para transformar tu sonrisa.
