@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
-import { MapPin, Phone, Clock, Send, Mail } from "lucide-react";
+import { MapPin, Phone, Clock, Send, Mail, ExternalLink } from "lucide-react";
 
 const locations = [
   {
@@ -8,12 +8,14 @@ const locations = [
     address: "Av. Winston Churchill, Torre Empresarial, Piso 4",
     phone: "+1 (809) 555-1234",
     hours: "Lun - Vie: 8:00 AM - 6:00 PM · Sáb: 9:00 AM - 1:00 PM",
+    mapQuery: "Av. Winston Churchill, Torre Empresarial, Piso 4, Santiago, Republica Dominicana",
   },
   {
     city: "Mao",
     address: "Calle Duarte #45, Centro Médico Luján",
     phone: "+1 (809) 555-5678",
     hours: "Lun - Vie: 8:00 AM - 5:00 PM · Sáb: 9:00 AM - 12:00 PM",
+    mapQuery: "Calle Duarte 45, Centro Medico Lujan, Mao, Republica Dominicana",
   },
 ];
 
@@ -28,20 +30,20 @@ export default function Contact() {
   };
 
   return (
-    <section id="contacto" className="section-padding bg-secondary/50">
+    <section id="ubicacion" className="section-padding bg-secondary/50">
       <div ref={ref} className={`container-narrow transition-all duration-700 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
         <div className="text-center max-w-2xl mx-auto mb-16">
-          <span className="text-cyan text-sm font-medium tracking-widest uppercase">Contáctanos</span>
+          <span className="text-cyan text-sm font-medium tracking-widest uppercase">Ubicación y contacto</span>
           <h2 className="heading-display text-3xl md:text-4xl text-foreground mt-3 mb-4">
-            Agenda tu <span className="italic">cita</span>
+            Visítanos en nuestras <span className="italic">sedes</span>
           </h2>
           <p className="text-muted-foreground">
-            Da el primer paso hacia tu mejor sonrisa. Estamos aquí para atenderte.
+            Revisa nuestras ubicaciones, explora el mapa interactivo y agenda tu cita desde la sede que te quede más cómoda.
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-12">
-          <div>
+        <div className="grid xl:grid-cols-[0.82fr_1.18fr] gap-12 items-start">
+          <div id="contacto" className="space-y-6 scroll-mt-28">
             <form onSubmit={handleSubmit} className="glass-card rounded-2xl p-8 space-y-5">
               <div>
                 <label className="text-foreground text-sm font-medium mb-1.5 block">Nombre completo</label>
@@ -91,32 +93,6 @@ export default function Contact() {
                 <Send className="w-4 h-4" /> Enviar mensaje
               </button>
             </form>
-          </div>
-
-          <div className="space-y-6">
-            {locations.map((loc) => (
-              <div key={loc.city} className="glass-card rounded-2xl p-6">
-                <h3 className="font-display text-lg font-semibold text-foreground mb-4">
-                  Sede {loc.city}
-                </h3>
-                <div className="space-y-3">
-                  <div className="flex items-start gap-3">
-                    <MapPin className="w-4 h-4 text-cyan mt-0.5 flex-shrink-0" />
-                    <span className="text-muted-foreground text-sm">{loc.address}</span>
-                  </div>
-                  <div className="flex items-center gap-3">
-                    <Phone className="w-4 h-4 text-cyan flex-shrink-0" />
-                    <a href={`tel:${loc.phone.replace(/\s/g, "")}`} className="text-foreground text-sm font-medium hover:text-cyan transition-colors">
-                      {loc.phone}
-                    </a>
-                  </div>
-                  <div className="flex items-start gap-3">
-                    <Clock className="w-4 h-4 text-cyan mt-0.5 flex-shrink-0" />
-                    <span className="text-muted-foreground text-sm">{loc.hours}</span>
-                  </div>
-                </div>
-              </div>
-            ))}
 
             <div className="glass-card rounded-2xl p-6">
               <h3 className="font-display text-lg font-semibold text-foreground mb-3">Email directo</h3>
@@ -127,6 +103,65 @@ export default function Contact() {
                 </a>
               </div>
             </div>
+          </div>
+
+          <div className="space-y-6">
+            {locations.map((loc) => (
+              <div key={loc.city} className="glass-card rounded-3xl overflow-hidden">
+                <div className="p-6 md:p-7">
+                  <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4">
+                    <div>
+                      <h3 className="font-display text-xl font-semibold text-foreground">
+                        Sede {loc.city}
+                      </h3>
+                      <p className="text-muted-foreground text-sm mt-1">
+                        Ubicación de referencia con acceso a Google Maps.
+                      </p>
+                    </div>
+                    <a
+                      href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(loc.mapQuery)}`}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="inline-flex items-center gap-2 rounded-full border border-navy/15 bg-navy/5 px-4 py-2 text-xs font-medium uppercase tracking-[0.18em] text-navy transition-colors hover:bg-navy/10"
+                    >
+                      Abrir mapa
+                      <ExternalLink className="w-3.5 h-3.5" />
+                    </a>
+                  </div>
+
+                  <div className="grid sm:grid-cols-2 gap-4 mt-6 mb-6">
+                    <div className="rounded-2xl bg-background/70 border border-border/60 p-4">
+                      <div className="flex items-start gap-3">
+                        <MapPin className="w-4 h-4 text-cyan mt-0.5 flex-shrink-0" />
+                        <span className="text-muted-foreground text-sm">{loc.address}</span>
+                      </div>
+                    </div>
+                    <div className="rounded-2xl bg-background/70 border border-border/60 p-4 space-y-3">
+                      <div className="flex items-center gap-3">
+                        <Phone className="w-4 h-4 text-cyan flex-shrink-0" />
+                        <a href={`tel:${loc.phone.replace(/\s/g, "")}`} className="text-foreground text-sm font-medium hover:text-cyan transition-colors">
+                          {loc.phone}
+                        </a>
+                      </div>
+                      <div className="flex items-start gap-3">
+                        <Clock className="w-4 h-4 text-cyan mt-0.5 flex-shrink-0" />
+                        <span className="text-muted-foreground text-sm">{loc.hours}</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="overflow-hidden rounded-[1.35rem] border border-border/60 bg-background/70">
+                    <iframe
+                      title={`Mapa interactivo de la sede ${loc.city}`}
+                      src={`https://www.google.com/maps?q=${encodeURIComponent(loc.mapQuery)}&z=15&output=embed`}
+                      className="h-[280px] w-full"
+                      loading="lazy"
+                      referrerPolicy="no-referrer-when-downgrade"
+                    />
+                  </div>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </div>

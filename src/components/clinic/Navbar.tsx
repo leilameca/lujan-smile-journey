@@ -1,15 +1,14 @@
 import { useState, useEffect } from "react";
-import { Menu, X, Phone } from "lucide-react";
+import { Menu, X } from "lucide-react";
+import logo from "@/assets/logo.png";
 
 const navLinks = [
-  { label: "Inicio", href: "#inicio" },
   { label: "Clínica", href: "#clinica" },
   { label: "Servicios", href: "#servicios" },
+  { label: "Seguros", href: "#seguros" },
   { label: "Equipo", href: "#equipo" },
-  { label: "Smile Journey", href: "#smile-journey" },
-  { label: "Testimonios", href: "#testimonios" },
   { label: "FAQ", href: "#faq" },
-  { label: "Contacto", href: "#contacto" },
+  { label: "Ubicación", href: "#ubicacion" },
 ];
 
 export default function Navbar() {
@@ -26,18 +25,24 @@ export default function Navbar() {
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
         scrolled
-          ? "bg-navy-deep/95 backdrop-blur-lg shadow-lg py-3"
-          : "bg-transparent py-5"
+          ? "bg-navy-deep/95 backdrop-blur-lg shadow-lg py-2"
+          : "bg-transparent py-4"
       }`}
     >
-      <div className="container-narrow flex items-center justify-between">
-        <a href="#inicio" className="flex items-center gap-2">
-          <div className="w-9 h-9 rounded-full bg-gradient-to-br from-cyan to-cyan-light flex items-center justify-center">
-            <span className="font-display text-navy-deep font-bold text-sm">L</span>
-          </div>
-          <div className="flex flex-col leading-tight">
-            <span className="font-display text-primary-foreground font-semibold text-lg tracking-tight">Luján</span>
-            <span className="text-cyan text-[10px] tracking-[0.25em] uppercase font-medium -mt-0.5">Dental Clinic</span>
+      <div className="container-narrow flex items-center justify-between gap-3">
+        <a href="#inicio" className="min-w-0 flex flex-1 items-center gap-2.5 md:gap-4">
+          <img
+            src={logo}
+            alt="Lujan Dental Clinic"
+            className="h-12 sm:h-14 md:h-20 w-auto max-w-[100px] sm:max-w-[120px] md:max-w-[180px] object-contain shrink-0"
+          />
+          <div className="hidden sm:flex flex-col leading-tight min-w-0">
+            <span className="font-display text-primary-foreground font-semibold text-lg md:text-2xl tracking-tight truncate">
+              Luján
+            </span>
+            <span className="text-cyan text-[10px] md:text-xs tracking-[0.25em] uppercase font-medium -mt-0.5 truncate">
+              Dental Clinic
+            </span>
           </div>
         </a>
 
@@ -54,9 +59,6 @@ export default function Navbar() {
         </nav>
 
         <div className="hidden lg:flex items-center gap-4">
-          <a href="tel:+18095551234" className="text-primary-foreground/70 hover:text-cyan transition-colors">
-            <Phone className="w-4 h-4" />
-          </a>
           <a href="#contacto" className="btn-primary-clinic text-sm !px-5 !py-2.5">
             Agendar cita
           </a>
@@ -64,7 +66,7 @@ export default function Navbar() {
 
         <button
           onClick={() => setMobileOpen(!mobileOpen)}
-          className="lg:hidden text-primary-foreground/80"
+          className="lg:hidden shrink-0 rounded-full p-2 text-primary-foreground/80 hover:bg-white/10 transition-colors"
           aria-label="Toggle menu"
         >
           {mobileOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}

@@ -103,7 +103,7 @@ export default function TreatmentQuiz() {
       <div ref={ref} className={`container-narrow transition-all duration-700 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
         <div className="max-w-2xl mx-auto">
           <div className="text-center mb-12">
-            <span className="text-cyan text-sm font-medium tracking-widest uppercase">Quiz interactivo</span>
+            <span className="text-navy text-sm font-medium tracking-widest uppercase">Quiz interactivo</span>
             <h2 className="heading-display text-3xl md:text-4xl text-foreground mt-3 mb-4">
               Encuentra tu tratamiento <span className="italic">ideal</span>
             </h2>
@@ -117,7 +117,7 @@ export default function TreatmentQuiz() {
                     <div
                       key={i}
                       className={`h-1 flex-1 rounded-full transition-all duration-500 ${
-                        i <= step ? "bg-cyan" : "bg-border"
+                        i <= step ? "bg-navy" : "bg-border"
                       }`}
                     />
                   ))}
@@ -135,8 +135,8 @@ export default function TreatmentQuiz() {
                       onClick={() => setSelected(opt.value)}
                       className={`text-left px-6 py-4 rounded-xl border-2 transition-all duration-300 font-medium text-sm ${
                         selected === opt.value
-                          ? "border-cyan bg-cyan/10 text-foreground"
-                          : "border-border hover:border-cyan/40 text-foreground/70"
+                          ? "border-navy bg-navy/10 text-navy-deep shadow-[0_10px_30px_-18px_hsl(var(--navy)/0.35)]"
+                          : "border-border hover:border-navy/35 text-foreground/70"
                       }`}
                     >
                       {opt.label}
@@ -155,7 +155,7 @@ export default function TreatmentQuiz() {
                   <button
                     onClick={next}
                     disabled={!selected}
-                    className="btn-primary-clinic disabled:opacity-40 disabled:cursor-not-allowed"
+                    className="inline-flex items-center gap-2 rounded-full bg-navy px-7 py-3.5 text-sm font-medium text-primary-foreground transition-all duration-300 hover:bg-navy-light hover:-translate-y-0.5 disabled:opacity-40 disabled:cursor-not-allowed"
                   >
                     {step < questions.length - 1 ? "Siguiente" : "Ver resultado"}
                     <ArrowRight className="w-4 h-4" />
@@ -164,20 +164,23 @@ export default function TreatmentQuiz() {
               </>
             ) : result ? (
               <div className="text-center">
-                <div className="w-16 h-16 rounded-full bg-cyan/10 flex items-center justify-center mx-auto mb-6">
-                  <Sparkles className="w-7 h-7 text-cyan" />
+                <div className="w-16 h-16 rounded-full bg-navy/10 flex items-center justify-center mx-auto mb-6">
+                  <Sparkles className="w-7 h-7 text-navy" />
                 </div>
                 <h3 className="font-display text-2xl md:text-3xl text-foreground mb-4">{result.title}</h3>
                 <p className="text-muted-foreground leading-relaxed mb-6">{result.desc}</p>
                 <div className="flex flex-wrap gap-2 justify-center mb-8">
                   {result.treatments.map((t) => (
-                    <span key={t} className="px-4 py-1.5 rounded-full bg-cyan/10 text-cyan text-xs font-medium">
+                    <span key={t} className="px-4 py-1.5 rounded-full bg-navy/10 text-navy text-xs font-medium">
                       {t}
                     </span>
                   ))}
                 </div>
                 <div className="flex flex-col sm:flex-row gap-3 justify-center">
-                  <a href="#contacto" className="btn-primary-clinic">
+                  <a
+                    href="#contacto"
+                    className="inline-flex items-center justify-center gap-2 rounded-full bg-navy px-7 py-3.5 text-sm font-medium text-primary-foreground transition-all duration-300 hover:bg-navy-light hover:-translate-y-0.5"
+                  >
                     Agendar evaluación <ArrowRight className="w-4 h-4" />
                   </a>
                   <button onClick={reset} className="text-sm text-muted-foreground hover:text-foreground transition-colors">
