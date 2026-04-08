@@ -6,7 +6,7 @@ const locations = [
   {
     city: "Santiago",
     address: "Av. Winston Churchill, Torre Empresarial, Piso 4",
-    phone: "+1 (809) 555-1234",
+    phone: "+1 (809) 572-3251",
     hours: "Lun - Vie: 8:00 AM - 6:00 PM · Sáb: 9:00 AM - 1:00 PM",
     mapQuery: "Av. Winston Churchill, Torre Empresarial, Piso 4, Santiago, Republica Dominicana",
     latitude: 19.4517,
@@ -15,7 +15,7 @@ const locations = [
   {
     city: "Mao",
     address: "Calle Duarte #45, Centro Médico Luján",
-    phone: "+1 (809) 555-5678",
+    phone: "+1 (809) 572-3251",
     hours: "Lun - Vie: 8:00 AM - 5:00 PM · Sáb: 9:00 AM - 12:00 PM",
     mapQuery: "Calle Duarte 45, Centro Medico Lujan, Mao, Republica Dominicana",
     latitude: 19.5519,
@@ -40,7 +40,7 @@ export default function Contact() {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     const msg = `Hola, soy ${formData.name}. ${formData.message}. Mi email: ${formData.email}, teléfono: ${formData.phone}`;
-    window.open(`https://wa.me/18095551234?text=${encodeURIComponent(msg)}`, "_blank");
+    window.open(`https://wa.me/18095723251?text=${encodeURIComponent(msg)}`, "_blank");
   };
 
   return (
@@ -153,7 +153,7 @@ export default function Contact() {
                     <div className="rounded-2xl bg-background/70 border border-border/60 p-4 space-y-3">
                       <div className="flex items-center gap-3">
                         <Phone className="w-4 h-4 text-cyan flex-shrink-0" />
-                        <a href={`tel:${loc.phone.replace(/\s/g, "")}`} className="text-foreground text-sm font-medium hover:text-cyan transition-colors">
+                        <a href={`tel:${loc.phone.replace(/[^\d+]/g, "")}`} className="text-foreground text-sm font-medium hover:text-cyan transition-colors">
                           {loc.phone}
                         </a>
                       </div>

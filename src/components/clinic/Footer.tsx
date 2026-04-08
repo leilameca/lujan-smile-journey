@@ -75,7 +75,7 @@ export default function Footer() {
             </div>
             <div className="mt-4">
               <h4 className="font-semibold text-sm mb-2 text-primary-foreground/80">Emergencias</h4>
-              <a href="tel:+18095551234" className="text-cyan text-sm font-medium">+1 (809) 555-1234</a>
+              <a href="tel:+18095723251" className="text-cyan text-sm font-medium">+1 (809) 572-3251</a>
             </div>
           </div>
         </div>
