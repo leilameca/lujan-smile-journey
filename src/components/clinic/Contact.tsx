@@ -9,6 +9,8 @@ const locations = [
     phone: "+1 (809) 555-1234",
     hours: "Lun - Vie: 8:00 AM - 6:00 PM · Sáb: 9:00 AM - 1:00 PM",
     mapQuery: "Av. Winston Churchill, Torre Empresarial, Piso 4, Santiago, Republica Dominicana",
+    latitude: 19.4517,
+    longitude: -70.697,
   },
   {
     city: "Mao",
@@ -16,11 +18,20 @@ const locations = [
     phone: "+1 (809) 555-5678",
     hours: "Lun - Vie: 8:00 AM - 5:00 PM · Sáb: 9:00 AM - 12:00 PM",
     mapQuery: "Calle Duarte 45, Centro Medico Lujan, Mao, Republica Dominicana",
+    latitude: 19.5519,
+    longitude: -71.0781,
   },
 ];
 
-const getGoogleMapsEmbedUrl = (query: string) =>
-  `https://maps.google.com/maps?width=100%25&height=100%25&hl=es&q=${encodeURIComponent(query)}&t=&z=15&ie=UTF8&iwloc=B&output=embed`;
+const getOpenStreetMapEmbedUrl = (latitude: number, longitude: number) => {
+  const delta = 0.018;
+  const left = longitude - delta;
+  const right = longitude + delta;
+  const top = latitude + delta;
+  const bottom = latitude - delta;
+
+  return `https://www.openstreetmap.org/export/embed.html?bbox=${left}%2C${bottom}%2C${right}%2C${top}&layer=mapnik&marker=${latitude}%2C${longitude}`;
+};
 
 export default function Contact() {
   const { ref, isVisible } = useScrollAnimation();
@@ -156,11 +167,11 @@ export default function Contact() {
                   <div className="overflow-hidden rounded-[1.35rem] border border-border/60 bg-background/70">
                     <iframe
                       title={`Mapa interactivo de la sede ${loc.city}`}
-                      src={getGoogleMapsEmbedUrl(loc.mapQuery)}
+                      src={getOpenStreetMapEmbedUrl(loc.latitude, loc.longitude)}
                       className="h-[280px] w-full"
                       loading="lazy"
                       allowFullScreen
-                      referrerPolicy="no-referrer-when-downgrade"
+                      referrerPolicy="strict-origin-when-cross-origin"
                     />
                   </div>
                 </div>
