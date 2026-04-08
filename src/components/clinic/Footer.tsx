@@ -35,10 +35,10 @@ export default function Footer() {
               Odontología especializada con tecnología de vanguardia y calidez humana.
             </p>
             <div className="flex gap-3">
-              <a href="#" className="w-9 h-9 rounded-full border border-cyan/20 flex items-center justify-center hover:bg-cyan/10 transition-colors" aria-label="Instagram">
+              <a href="https://www.instagram.com/lujandentalclinic?igsh=NjllYjluMmFlMWVn" target="_blank" rel="noreferrer" className="w-9 h-9 rounded-full border border-cyan/20 flex items-center justify-center hover:bg-cyan/10 transition-colors" aria-label="Instagram">
                 <Instagram className="w-4 h-4 text-cyan" />
               </a>
-              <a href="#" className="w-9 h-9 rounded-full border border-cyan/20 flex items-center justify-center hover:bg-cyan/10 transition-colors" aria-label="Facebook">
+              <a href="https://www.facebook.com/share/18iNF1YZNz/?mibextid=wwXIfr" target="_blank" rel="noreferrer" className="w-9 h-9 rounded-full border border-cyan/20 flex items-center justify-center hover:bg-cyan/10 transition-colors" aria-label="Facebook">
                 <Facebook className="w-4 h-4 text-cyan" />
               </a>
             </div>
