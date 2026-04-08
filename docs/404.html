@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Redirigiendo...</title>
+    <script>
+      (function () {
+        var parts = window.location.pathname.split("/").filter(Boolean);
+        var projectRoot = parts.length > 0 ? "/" + parts[0] + "/" : "/";
+        window.location.replace(projectRoot + window.location.search + window.location.hash);
+      })();
+    </script>
+    <style>
+      body {
+        margin: 0;
+        min-height: 100vh;
+        display: grid;
+        place-items: center;
+        background: #f6f8fb;
+        color: #16233b;
+        font-family: Arial, sans-serif;
+      }
+
+      a {
+        color: #16233b;
+      }
+    </style>
+  </head>
+  <body>
+    <p>Redirigiendo al inicio. Si no ocurre automaticamente, <a id="home-link" href="/">haz clic aqui</a>.</p>
+    <script>
+      (function () {
+        var parts = window.location.pathname.split("/").filter(Boolean);
+        var projectRoot = parts.length > 0 ? "/" + parts[0] + "/" : "/";
+        var homeLink = document.getElementById("home-link");
+        if (homeLink) {
+          homeLink.setAttribute("href", projectRoot);
+        }
+      })();
+    </script>
+  </body>
+</html>
