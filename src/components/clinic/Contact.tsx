@@ -8,16 +8,16 @@ const locations = [
     address: "Av. Winston Churchill, Torre Empresarial, Piso 4",
     phone: "+1 (809) 572-3251",
     hours: "Lun - Vie: 8:00 AM - 6:00 PM · Sáb: 9:00 AM - 1:00 PM",
-    mapQuery: "Av. Winston Churchill, Torre Empresarial, Piso 4, Santiago, Republica Dominicana",
-    mapUrl: "https://maps.app.goo.gl/PFijF9b233Nv7ggy",
+    mapQuery: "19.451149198999126,-70.67400609983866",
+    mapUrl: "https://www.google.com/maps?q=19.451149198999126,-70.67400609983866",
   },
   {
     city: "Mao",
     address: "Calle Duarte #45, Centro Médico Luján",
     phone: "+1 (809) 572-3251",
     hours: "Lun - Vie: 8:00 AM - 5:00 PM · Sáb: 9:00 AM - 12:00 PM",
-    mapQuery: "Calle Duarte 45, Centro Medico Lujan, Mao, Republica Dominicana",
-    mapUrl: "https://maps.app.goo.gl/JcgzZRsY4CaZw47cA",
+    mapQuery: "19.557908018497027,-71.07287123901139",
+    mapUrl: "https://www.google.com/maps?q=19.557908018497027,-71.07287123901139",
   },
 ];
 
