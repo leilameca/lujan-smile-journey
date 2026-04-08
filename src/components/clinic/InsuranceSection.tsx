@@ -109,26 +109,33 @@ export default function InsuranceSection() {
             {providers.map((provider, index) => (
               <div
                 key={provider.name}
-                className={`glass-card rounded-2xl p-5 transition-all duration-500 hover:-translate-y-1 hover:shadow-lg ${
+                className={`rounded-2xl transition-all duration-500 hover:-translate-y-1 hover:shadow-lg ${
                   isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
                 }`}
                 style={{ transitionDelay: `${index * 80}ms` }}
               >
-                <div className={`rounded-2xl border border-border/60 bg-gradient-to-br ${provider.cardClassName ?? "from-white to-white"} p-4 mb-4`}>
-                  <div className="h-20 rounded-2xl bg-white/85 backdrop-blur-sm border border-white/60 flex items-center justify-center px-5 shadow-sm">
-                    <img
-                      src={provider.logo}
-                      alt={`Logo de ${provider.name}`}
-                      className={`w-auto max-w-full object-contain ${provider.logoClassName ?? "max-h-12"}`}
-                      loading="lazy"
-                    />
+                <div
+                  className={`insurance-motion-card glass-card rounded-2xl p-5 ${
+                    isVisible ? "is-visible" : ""
+                  }`}
+                  style={{ animationDelay: `${index * 180}ms` }}
+                >
+                  <div className={`rounded-2xl border border-border/60 bg-gradient-to-br ${provider.cardClassName ?? "from-white to-white"} p-4 mb-4`}>
+                    <div className="h-20 rounded-2xl bg-white/85 backdrop-blur-sm border border-white/60 flex items-center justify-center px-5 shadow-sm">
+                      <img
+                        src={provider.logo}
+                        alt={`Logo de ${provider.name}`}
+                        className={`w-auto max-w-full object-contain ${provider.logoClassName ?? "max-h-12"}`}
+                        loading="lazy"
+                      />
+                    </div>
                   </div>
-                </div>
 
-                <p className="font-sans text-base font-semibold text-foreground">{provider.name}</p>
-                <p className="text-[11px] uppercase tracking-[0.18em] text-muted-foreground mt-1">
-                  {provider.caption}
-                </p>
+                  <p className="font-sans text-base font-semibold text-foreground">{provider.name}</p>
+                  <p className="text-[11px] uppercase tracking-[0.18em] text-muted-foreground mt-1">
+                    {provider.caption}
+                  </p>
+                </div>
               </div>
             ))}
           </div>

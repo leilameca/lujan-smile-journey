@@ -222,6 +222,37 @@
   .services-heading-mobile.is-active .services-heading-highlight {
     animation: services-mobile-highlight 2.8s ease-in-out 0.55s infinite;
   }
+
+  .insurance-motion-card {
+    will-change: transform;
+  }
+
+  .insurance-motion-card.is-visible {
+    animation: insurance-card-float 5.8s ease-in-out infinite;
+  }
+
+  .team-card-motion {
+    will-change: transform;
+  }
+
+  .team-card-motion.is-visible {
+    animation: team-card-float 6.8s ease-in-out infinite;
+  }
+
+  .doctor-portrait-shell {
+    box-shadow: 0 18px 38px -28px hsl(225 65% 17% / 0.45);
+  }
+
+  .team-card-motion.is-visible .doctor-portrait-image {
+    animation: doctor-image-drift 9s ease-in-out infinite;
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    .insurance-motion-card:hover,
+    .team-card-motion:hover {
+      transform: translateY(-6px);
+    }
+  }
 }
 
 @layer utilities {
@@ -261,7 +292,40 @@
   }
 }
 
+@keyframes insurance-card-float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+@keyframes team-card-float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes doctor-image-drift {
+  0%, 100% {
+    transform: scale(1.02) translate3d(0, 0, 0);
+  }
+
+  50% {
+    transform: scale(1.08) translate3d(0, -8px, 0);
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
+  .insurance-motion-card,
+  .team-card-motion,
+  .doctor-portrait-image,
   .services-heading-line,
   .services-heading-highlight,
   .services-heading-highlight::after {

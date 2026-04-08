@@ -9,8 +9,7 @@ const locations = [
     phone: "+1 (809) 572-3251",
     hours: "Lun - Vie: 8:00 AM - 6:00 PM · Sáb: 9:00 AM - 1:00 PM",
     mapQuery: "Av. Winston Churchill, Torre Empresarial, Piso 4, Santiago, Republica Dominicana",
-    latitude: 19.4517,
-    longitude: -70.697,
+    mapUrl: "https://maps.app.goo.gl/PFijF9b233Nv7ggy",
   },
   {
     city: "Mao",
@@ -18,19 +17,12 @@ const locations = [
     phone: "+1 (809) 572-3251",
     hours: "Lun - Vie: 8:00 AM - 5:00 PM · Sáb: 9:00 AM - 12:00 PM",
     mapQuery: "Calle Duarte 45, Centro Medico Lujan, Mao, Republica Dominicana",
-    latitude: 19.5519,
-    longitude: -71.0781,
+    mapUrl: "https://maps.app.goo.gl/JcgzZRsY4CaZw47cA",
   },
 ];
 
-const getOpenStreetMapEmbedUrl = (latitude: number, longitude: number) => {
-  const delta = 0.018;
-  const left = longitude - delta;
-  const right = longitude + delta;
-  const top = latitude + delta;
-  const bottom = latitude - delta;
-
-  return `https://www.openstreetmap.org/export/embed.html?bbox=${left}%2C${bottom}%2C${right}%2C${top}&layer=mapnik&marker=${latitude}%2C${longitude}`;
+const getGoogleMapsEmbedUrl = (query: string) => {
+  return `https://www.google.com/maps?q=${encodeURIComponent(query)}&z=15&output=embed`;
 };
 
 export default function Contact() {
@@ -129,11 +121,11 @@ export default function Contact() {
                         Sede {loc.city}
                       </h3>
                       <p className="text-muted-foreground text-sm mt-1">
-                        Ubicación de referencia con acceso a Google Maps.
+                        Vista interactiva embebida con Google Maps.
                       </p>
                     </div>
                     <a
-                      href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(loc.mapQuery)}`}
+                      href={loc.mapUrl}
                       target="_blank"
                       rel="noreferrer"
                       className="inline-flex items-center gap-2 rounded-full border border-navy/15 bg-navy/5 px-4 py-2 text-xs font-medium uppercase tracking-[0.18em] text-navy transition-colors hover:bg-navy/10"
@@ -167,7 +159,7 @@ export default function Contact() {
                   <div className="overflow-hidden rounded-[1.35rem] border border-border/60 bg-background/70">
                     <iframe
                       title={`Mapa interactivo de la sede ${loc.city}`}
-                      src={getOpenStreetMapEmbedUrl(loc.latitude, loc.longitude)}
+                      src={getGoogleMapsEmbedUrl(loc.mapQuery)}
                       className="h-[280px] w-full"
                       loading="lazy"
                       allowFullScreen

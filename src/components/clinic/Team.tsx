@@ -41,20 +41,31 @@ export default function Team() {
         </div>
 
         <div className="grid md:grid-cols-3 gap-8">
-          {team.map((member) => (
-            <div key={member.name} className="group text-center">
-              <div className="relative rounded-2xl overflow-hidden mb-6 aspect-[3/4]">
-                <img
-                  src={member.img}
-                  alt={member.name}
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-                  loading="lazy"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-navy-deep/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+          {team.map((member, index) => (
+            <div
+              key={member.name}
+              className={`group text-center transition-all duration-700 ${
+                isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+              }`}
+              style={{ transitionDelay: `${index * 120}ms` }}
+            >
+              <div
+                className={`team-card-motion ${isVisible ? "is-visible" : ""}`}
+                style={{ animationDelay: `${index * 220}ms` }}
+              >
+                <div className="doctor-portrait-shell relative rounded-2xl overflow-hidden mb-6 aspect-[3/4]">
+                  <img
+                    src={member.img}
+                    alt={member.name}
+                    className="doctor-portrait-image w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                    loading="lazy"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-navy-deep/70 via-transparent to-transparent opacity-20 transition-opacity duration-500 group-hover:opacity-100" />
+                </div>
+                <h3 className="font-display text-xl font-semibold text-foreground">{member.name}</h3>
+                <p className="text-cyan text-sm font-medium mt-1 mb-3">{member.role}</p>
+                <p className="text-muted-foreground text-sm leading-relaxed max-w-xs mx-auto">{member.desc}</p>
               </div>
-              <h3 className="font-display text-xl font-semibold text-foreground">{member.name}</h3>
-              <p className="text-cyan text-sm font-medium mt-1 mb-3">{member.role}</p>
-              <p className="text-muted-foreground text-sm leading-relaxed max-w-xs mx-auto">{member.desc}</p>
             </div>
           ))}
         </div>
