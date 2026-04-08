@@ -1,0 +1,16 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Redirigiendo...</title>
+    <script>
+      (function () {
+        var parts = window.location.pathname.split("/").filter(Boolean);
+        var projectRoot = parts.length > 0 ? "/" + parts[0] + "/" : "/";
+        window.location.replace(projectRoot + "docs/" + window.location.search + window.location.hash);
+      })();
+    </script>
+  </head>
+  <body></body>
+</html>
