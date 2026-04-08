@@ -19,6 +19,9 @@ const locations = [
   },
 ];
 
+const getGoogleMapsEmbedUrl = (query: string) =>
+  `https://maps.google.com/maps?width=100%25&height=100%25&hl=es&q=${encodeURIComponent(query)}&t=&z=15&ie=UTF8&iwloc=B&output=embed`;
+
 export default function Contact() {
   const { ref, isVisible } = useScrollAnimation();
   const [formData, setFormData] = useState({ name: "", email: "", phone: "", message: "" });
@@ -153,9 +156,10 @@ export default function Contact() {
                   <div className="overflow-hidden rounded-[1.35rem] border border-border/60 bg-background/70">
                     <iframe
                       title={`Mapa interactivo de la sede ${loc.city}`}
-                      src={`https://www.google.com/maps?q=${encodeURIComponent(loc.mapQuery)}&z=15&output=embed`}
+                      src={getGoogleMapsEmbedUrl(loc.mapQuery)}
                       className="h-[280px] w-full"
                       loading="lazy"
+                      allowFullScreen
                       referrerPolicy="no-referrer-when-downgrade"
                     />
                   </div>
