@@ -1,4 +1,5 @@
 import { Instagram, Facebook } from "lucide-react";
+import logo from "@/assets/logo.png";
 
 const links = {
   servicios: [
@@ -20,9 +21,11 @@ export default function Footer() {
         <div className="grid md:grid-cols-4 gap-10 mb-12">
           <div>
             <div className="flex items-center gap-2 mb-4">
-              <div className="w-8 h-8 rounded-full bg-gradient-to-br from-cyan to-cyan-light flex items-center justify-center">
-                <span className="font-display text-navy-deep font-bold text-xs">L</span>
-              </div>
+              <img
+                src={logo}
+                alt="Luján Dental Clinic"
+                className="h-11 w-auto max-w-[88px] object-contain shrink-0"
+              />
               <div className="flex flex-col leading-tight">
                 <span className="font-display font-semibold text-base">Luján</span>
                 <span className="text-cyan text-[9px] tracking-[0.25em] uppercase -mt-0.5">Dental Clinic</span>

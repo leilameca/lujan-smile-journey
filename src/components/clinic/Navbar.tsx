@@ -30,17 +30,20 @@ export default function Navbar() {
       }`}
     >
       <div className="container-narrow flex items-center justify-between gap-3">
-        <a href="#inicio" className="min-w-0 flex flex-1 items-center gap-2.5 md:gap-4">
+        <a href="#inicio" className="min-w-0 flex flex-1 items-center gap-2 pr-2 sm:gap-2.5 md:gap-4">
           <img
             src={logo}
             alt="Lujan Dental Clinic"
-            className="h-12 sm:h-14 md:h-20 w-auto max-w-[100px] sm:max-w-[120px] md:max-w-[180px] object-contain shrink-0"
+            className="h-10 sm:h-14 md:h-20 w-auto max-w-[84px] sm:max-w-[120px] md:max-w-[180px] object-contain shrink-0"
           />
-          <div className="hidden sm:flex flex-col leading-tight min-w-0">
-            <span className="font-display text-primary-foreground font-semibold text-lg md:text-2xl tracking-tight truncate">
+          <div className="flex min-w-0 flex-col leading-tight">
+            <span className="font-display text-primary-foreground font-semibold text-sm tracking-tight truncate sm:hidden">
+              Luján Clinic
+            </span>
+            <span className="hidden font-display text-primary-foreground font-semibold text-lg md:text-2xl tracking-tight truncate sm:block">
               Luján
             </span>
-            <span className="text-cyan text-[10px] md:text-xs tracking-[0.25em] uppercase font-medium -mt-0.5 truncate">
+            <span className="hidden text-cyan text-[10px] md:text-xs tracking-[0.25em] uppercase font-medium -mt-0.5 truncate sm:block">
               Dental Clinic
             </span>
           </div>
