@@ -91,7 +91,7 @@ function AnimatedCount({
 }
 
 export default function TrustBar() {
-  const { ref, isVisible } = useScrollAnimation();
+  const { ref, isVisible } = useScrollAnimation({ once: false });
 
   return (
     <section className="relative -mt-16 z-10">
